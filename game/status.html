@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>MyVirus Server Status</title>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="js/settings.js"></script>
+        <script type="text/javascript" src="js/tools.js"></script>
+        <style>
+            
+            .button {border-radius: 5px;
+                    background-color: #F0FFFF;
+                    padding: 15px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    margin-top: 10px;
+                    color: black;
+                    height: 35px;
+                    padding-top: 0px;
+                    }
+            
+            #statusBar {border-radius: 5px;
+                        background-color: #F0FFFF;
+                        padding: 15px;
+                        margin-left: auto;
+                        margin-right: auto;
+                        margin-top: 10px;
+                        margin-bottom: 10px;
+                        color: gray;
+                        height: 20px;
+                        padding-left: 20px;
+                        }
+                        
+            .buttonName {width: 70px;
+                         border-radius: 5px;
+                         margin-left: -5px;
+                         -ms-user-select: none;
+                         -moz-user-select: none;
+                         -webkit-user-select: none;
+                         user-select: none;
+                         cursor: pointer;
+                         display: inline-block;
+                         margin-top: 8px;
+                         }
+                        
+            #serverStartButton {padding-left: 20px;
+                                background-color: #F0F8FF;
+                                border: 1px solid #E6E6FA;
+                                height: 25px;
+                                padding-top: 7px;
+                                }
+            
+            #serverStopButton {padding-left: 25px;
+                               width: 65px;
+                               background-color: #FFF8DC;
+                               border: 1px solid #FFDEAD;
+                               height: 24px;
+                               padding-top: 8px;
+                               }
+                                
+            .buttonContent {display: inline-block;
+                            width: auto;
+                            margin-left: 50px;
+                            color: gray;
+                            }
+            
+        </style>
+    </head>
+    <body>
+        
+        <div id="statusBar">UNKNOWN</div>
+        
+        <div class="button">
+            <div class="buttonName" id="serverStartButton">START</div>
+            <div class="buttonContent" id="serverStartContent"></div>
+        </div>
+        
+        <div class="button">
+            <div class="buttonName" id="serverStopButton">STOP</div>
+            <div class="buttonContent" id="serverStopContent"></div>
+        </div>
+        
+        <script type="text/javascript">
+            
+            setTimeout(function checkServerStatus() {
+                  
+                  ajax_request(STATUS, 'status', function(response) {
+                      
+                      if (response === 'online') {
+                          
+                          statusBar.style.color = 'green';
+                          statusBar.innerHTML = 'ONLINE';
+                          
+                      } else {
+                          
+                          if (response === 'offline') {
+                              
+                              statusBar.style.color = 'red';
+                              statusBar.innerHTML = 'OFFLINE';
+                              
+                          } else {
+                              
+                              statusBar.style.color = 'gray';
+                              statusBar.innerHTML = 'UNKNOWN';
+                              
+                          }
+                      }
+                      
+                  });
+                  
+                  setTimeout(checkServerStatus, 2000);
+                  
+            }, 4);
+            
+            function serverStart() {
+                
+                serverStartContent.innerHTML = '--- waiting for response ---';
+                
+                server_start(function(response) {
+                    
+                    serverStartContent.innerHTML = response;
+                });
+            }
+            
+            function serverStop() {
+                
+                serverStopContent.innerHTML = '--- waiting for response ---';
+                
+                server_stop('0000', function(response) {
+                    
+                    serverStopContent.innerHTML = response;
+                });
+            }
+            
+            serverStartButton.addEventListener('click', serverStart);
+            serverStopButton.addEventListener('click', serverStop);
+            
+        </script>
+        
+    </body>
+</html>

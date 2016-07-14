@@ -16,14 +16,14 @@
 <body background="img/bloodstream.jpg">
 <div class="container">
     <div class="row margin-top">
-        <form class="login-form center-block" method="post">
+        <form class="login-form center-block" action="game/index.php" method="POST">
             <div class="form-group">
                 <label for="exampleInputName" style="color: #5cb85c">Your name</label>
                 <input type="Name" name="name" class="form-control" id="exampleInputName" placeholder="Name">
             </div>
             <button id="playButton" type="submit" class="btn btn-default login-btn">Play</button>
             <div id="soundContainer">
-                <label class="checkbox-inline" style="color: #5cb85c"><input type="checkbox" name="sound">Sound</label>
+                <label class="checkbox-inline" style="color: #5cb85c"><input type="checkbox" name="sound" value="on">Sound</label>
             </div>
         </form>
     </div>

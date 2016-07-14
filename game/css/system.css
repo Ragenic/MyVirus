@@ -1,0 +1,119 @@
+
+#connectionContent {
+    width: 400px;
+    height: 480px;
+    display: inline-block;
+    margin-left: 50px;
+    margin-top: 50px;
+    vertical-align: top;
+    color: gray;
+}
+
+#connectionImage {
+    display: inline-block;
+    width: 539px;
+    height: 480px;
+    background: url("/game/resources/connection.gif");
+    margin-top: 25px;
+    vertical-align: top;
+}
+
+#connectionProgress {
+    display: block;
+}
+
+#gameWrapper {
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 3000px;
+    height: 2000px;
+    display: none;
+    position: relative;
+    background-color: red;
+}
+
+.wall {
+    height: 35px;
+}
+
+#gameBackground {
+    position: absolute;
+    left: 0px;
+    width: 3000px;
+}
+
+#topWall {
+    background: url("/game/resources/wallTop.png") repeat-X;
+}
+
+#bottomWall {
+    background: url("/game/resources/wallBottom.png") repeat-X;
+}
+
+.field {
+    height: 400px;
+}
+
+#fieldBackground {
+    background: url("/game/resources/field.png") repeat;
+}
+
+#gameInterface {
+    position: absolute;
+    left: 50px;
+}
+
+#gameField {
+    position: absolute;
+    height: 400px;
+    top: 35px;
+    left: 0px;
+}
+
+.player {
+    width: 50px;
+    height: 80px;
+    position: absolute;
+}
+
+.playerName {
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    top: 0px;
+    left: -5px;
+    white-space: nowrap;
+}
+
+.playerImage {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 30px;
+    background: url("/game/resources/player.png") no-repeat;
+}
+
+.enemyBlue {
+    width: 65px;
+    height: 65px;
+    background: url("/game/resources/enemyBlue.png") no-repeat;
+    position: absolute;
+}
+
+.enemyGreen {
+    width: 65px;
+    height: 65px;
+    background: url("/game/resources/enemyGreen.png") no-repeat;
+    position: absolute;
+}
+
+.enemySwarm {
+    width: 65px;
+    height: 65px;
+    background: url("/game/resources/swarm.png") no-repeat;
+    position: absolute;
+}
+
+
+
+
