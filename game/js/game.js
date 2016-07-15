@@ -82,7 +82,15 @@ function createEnemy(id, x_left, y_top, kind, speed) {
         if (window.myID === 'player1') {
             
             window.enemies[id].pushTimer = setTimeout(function pushEnemy(id) {
-                sendScenario(newScenario('scenario', 'enemy', id, window.enemies[id].left, window.enemies[id].top, window.enemies[id].kind, window.enemies[id].speed));
+				if ((Math.abs(window.enemies[id].left - window.players['player1'].left) < 50) && ((Math.abs(window.enemies[id].top - window.players['player1'].top) < 50))) {
+					sendScenario(newScenario('scenario', 'deleteEnemy', id));
+					deleteEnemy(id);
+				} else if ((window.players['player2'] !== undefined) && ((Math.abs(window.enemies[id].left - window.players['player2'].left) < 50) && ((Math.abs(window.enemies[id].top - window.players['player2'].top) < 50)))) {
+					sendScenario(newScenario('scenario', 'deleteEnemy', id));
+					deleteEnemy(id);
+				} else {
+					sendScenario(newScenario('scenario', 'enemy', id, window.enemies[id].left, window.enemies[id].top, window.enemies[id].kind, window.enemies[id].speed));
+				}
                 window.enemies[id].pushTimer = setTimeout(pushEnemy, 200, id);
             }, 200, id);
         }

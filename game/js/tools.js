@@ -134,7 +134,10 @@ function newScenario(type, vA, vB, vC, vD, vE, vF) {
             scenario.id = vB;
             scenario.left = vC;
             scenario.top = vD;
-        }
+			
+        } else if (vA === 'deleteEnemy') {
+			scenario.id = vB;
+		}
     }
     
     return scenario;

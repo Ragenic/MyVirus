@@ -58,6 +58,8 @@ function message_handler(e) {
             } else if (drama[i].command === 'newPlayer') {
                 
                 createPlayer(drama[i].id, drama[i].name, drama[i].left, drama[i].top);
+				
+				sendScenario(newScenario('scenario', 'move', window.myID, window.players[window.myID].left, window.players[window.myID].top));
                 
             } else if (drama[i].command === 'deletePlayer') {
                 
@@ -75,7 +77,10 @@ function message_handler(e) {
                 
                 movePlayer(drama[i].id, drama[i].left, drama[i].top);
                 
-            }
+            } else if (drama[i].action === 'deleteEnemy') {
+				
+				deleteEnemy(drama[i].id);
+			}
         }
     }
 }
